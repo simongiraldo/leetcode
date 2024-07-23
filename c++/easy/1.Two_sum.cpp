@@ -1,6 +1,9 @@
-#include <iostream>
+#include <vector>
+#include <unordered_map>
 
-vector<int> twoSum(vector<int>& nums, int target) {
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
         unordered_map<int, int> myMap;
 
         for(int i = 0;  i < nums.size(); i++) {
@@ -12,11 +15,5 @@ vector<int> twoSum(vector<int>& nums, int target) {
         }
 
         return {-1, -1};
-}
-
-int main()
-{
-    std::cout<<"Hello World";
-
-    return 0;
-}
+    }
+};
