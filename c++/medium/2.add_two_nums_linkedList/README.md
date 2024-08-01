@@ -8,6 +8,7 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 
 **Example 1:**
 
+![addtwonumber1](https://github.com/user-attachments/assets/a0e13a47-6c22-457e-a0c2-bf6b7b2814d5)
 
 Input: l1 = [2,4,3], l2 = [5,6,4]
 Output: [7,0,8]
