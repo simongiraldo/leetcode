@@ -12,10 +12,16 @@ As a reminder, a binary search tree is a tree that satisfies these constraints:
 
 **Example 1:**
 
+![tree](https://github.com/user-attachments/assets/38038d1f-bbf7-46bf-9dce-07ae0a51868a)
+
+
 Input: root = [4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]
+
 Output: [30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]
 
 
 **Example 2:**
+
 Input: root = [0,null,1]
+
 Output: [1,null,1]
