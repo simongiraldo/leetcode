@@ -4,14 +4,15 @@ class Solution {
 public:
     vector<int> lexicalOrder(int n) {
         vector<int> nums;
+        map<string, int>lexical;
 
         for(int i = 1; i <= n; i++) {
-            nums.push_back(i);
+            lexical[to_string(i)] = i;
         }
 
-        sort(nums.begin(), nums.end(), [](int& a, int& b){
-            return to_string(a) < to_string(b);
-        });
+        for(const auto& pair : lexical) {
+            nums.push_back(pair.second);
+        }
 
         return nums;
     }
