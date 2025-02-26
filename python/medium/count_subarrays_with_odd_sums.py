@@ -1,7 +1,5 @@
 from typing import List
 
-
-
 class Solution:
     mod = 10**9 + 7
 
