@@ -5,32 +5,30 @@ class Solution:
         if len(nums) == 1:
             return int(nums[0] >= target)
 
-        min_len = 1 if nums[0] >= target else float('inf')
-        prefix_index = {0:0}
-        prefix_index[nums[0]] = 0
-        prefix_sum = [0] * len(nums)
-        prefix_sum[0] = nums[0]
+        if nums[0] >= target:
+            return 1
 
-        for i in range(1, len(nums)):
-            current = prefix_sum[i-1] + nums[i]
-            if current >= target:
-                index = 0
-                if current - target in prefix_index:
-                    index = prefix_index[current - target]
-                    current_len = i - index
-                else:
-                    diff = current - target
-                    if diff - (nums[i] - diff) in prefix_index:
-                        index = prefix_index[diff - (nums[i] - diff)]
+        min_len = float("inf")
+        left = 0
+        right = 0
+        window_sum = nums[0]
 
-                    current_len = i - index
-                
-                if current_len < min_len:
-                    min_len = current_len
+        while left < len(nums):
+            if window_sum < target and right + 1 == len(nums):
+                break
 
+            if window_sum < target:
+                right += 1
+                window_sum += nums[right]
+                continue
 
-            prefix_sum[i] = current
-            prefix_index[current] = i 
+            current_len = right + 1 - left
+            if current_len < min_len:
+                min_len = current_len
+                if min_len == 1:
+                    return 1
 
-        return min_len if min_len != float('inf') else 0
+            window_sum -= nums[left]
+            left += 1
 
+        return min_len if min_len != float("inf") else 0
