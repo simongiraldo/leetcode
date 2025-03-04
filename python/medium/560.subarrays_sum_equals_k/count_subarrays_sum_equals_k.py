@@ -9,7 +9,7 @@ class Solution:
         sumCounter = {
             0: 1,
         }
-        sumCounter[nums[0]] = sumCounter.get(nums[0], 0) + 1 # in case k and first element == 0
+        sumCounter[nums[0]] = sumCounter.get(nums[0], 0) + 1 # in case k and first element = 0
         prefixSum = []
         prefixSum.append(nums[0])
 
