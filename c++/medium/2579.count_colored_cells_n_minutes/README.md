@@ -3,9 +3,10 @@ There exists an infinitely large two-dimensional grid of uncolored unit cells. Y
 
 - At the first minute, color any arbitrary unit cell blue.
 - Every minute thereafter, color blue every uncolored cell that touches a blue cell.
+  
 Below is a pictorial representation of the state of the grid after minutes 1, 2, and 3.
+![image](https://github.com/user-attachments/assets/852e572d-9bfa-44be-8b80-fe5ce9f85a18)
 
-image_here
 
 
 ## Examples
@@ -18,7 +19,7 @@ Output: 1
 
 ------------
 
-> Example 2:
+**Example 2:**
 
 Input: n = 2
 Output: 5
