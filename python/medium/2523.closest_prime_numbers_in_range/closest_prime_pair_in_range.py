@@ -8,11 +8,7 @@ from typing import List;
 # if there are multiple pairs return the one with smallest num1
 
 def closestPrimes(left: int, right: int) -> List[int]:
-    all_primes = sieve_erathostenes(left, right)
-    primes = []
-    for i in all_primes:
-        if i >= left:
-            primes.append(i)
+    primes = sieve_erathostenes(left, right)
             
     answer = [-1, -1]
     min_diff = float('inf')
