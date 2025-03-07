@@ -8,7 +8,7 @@ from typing import List;
 # if there are multiple pairs return the one with smallest num1
 
 def closestPrimes(left: int, right: int) -> List[int]:
-    all_primes = sieve_erathostenes(right)
+    all_primes = sieve_erathostenes(left, right)
     primes = []
     for i in all_primes:
         if i >= left:
@@ -24,11 +24,9 @@ def closestPrimes(left: int, right: int) -> List[int]:
             answer[1] = primes[i]
         
     return answer
+    
         
-    # cases
-        # left == right
-        
-def sieve_erathostenes(n):
+def sieve_erathostenes(left, n):
     primes = [True] * (n+1)
     i = 2
     while i*i <= n:
@@ -40,7 +38,7 @@ def sieve_erathostenes(n):
         
     real_primes = []
     for i in range(2, len(primes)):
-        if primes[i]:
+        if primes[i] and i >= left:
             real_primes.append(i)
             
     return real_primes
@@ -53,5 +51,5 @@ result = closestPrimes(left, right)
 print(result)
 print("\n\n")
 n = 31
-print(sieve_erathostenes(n))
+print(sieve_erathostenes(0, n))
             
