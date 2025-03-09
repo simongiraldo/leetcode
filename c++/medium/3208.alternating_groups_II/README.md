@@ -22,7 +22,14 @@ Input: colors = [0,1,0,1,0], k = 3
 Output: 3
 
 > Explanation:
-image
+
+![image](https://github.com/user-attachments/assets/2cd9ac37-7c47-423f-a2b1-b87eb09b361e)
+Alternating groups:
+![image](https://github.com/user-attachments/assets/b3901a2d-c690-4be9-84ec-4c6356d5865c)
+![image](https://github.com/user-attachments/assets/9be6f5a8-0a03-40da-a81a-b3c917d25972)
+![image](https://github.com/user-attachments/assets/b20ae11f-c3c3-4a3e-910a-5dd6a958040c)
+
+
 
 ------------
 
@@ -33,4 +40,9 @@ Input: colors = [0,1,0,0,1,0,1], k = 6
 Output: 2
 
 > Explanation:
-image
+
+![image](https://github.com/user-attachments/assets/8cddce2b-cfe6-4d39-8bdd-7f363335f39c)
+Alternating groups:
+![image](https://github.com/user-attachments/assets/506090db-b648-4c69-b6e3-3c8b618118ee)
+![image](https://github.com/user-attachments/assets/d5367231-e971-49a3-896e-40992edcaefa)
+
