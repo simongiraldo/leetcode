@@ -20,6 +20,7 @@ public:
     long long countOfSubstrings(string word, int k) {
         if (word.size() < k + 5)
             return 0;
+            
         int left = 0;
         int right = 1;
         int vowels = this->isVowel(word[left]);
@@ -143,7 +144,9 @@ int main()
     string case4 = "ieaouqqieaouqq";
     long long test4 = sn->countOfSubstrings(case4, 1);
     string result4 = test4 == 3 ? "PASS" : "FAIL";
-    cout<<"Result for "<<case4<<": "<<test4<<"  "<<result4<<endl;
+    cout<<"Result for "<<case4<<": "<<test4<<"  "<<result4<<endl<<endl;
+
+    cout<<"Finished :)"<<endl;
 
 
     return 0;
