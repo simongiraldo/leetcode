@@ -7,14 +7,11 @@ class Solution {
 public:
     int minOperations(vector<int>& nums) {
         int flipCount = 0;
-        int onesCount = 0;
 
         for(int i = 0; i < nums.size()-2; i++) {
             int left = nums[i];
             int middle = nums[i+1];
             int right = nums[i+2];
-
-            onesCount++;
 
             if(left == 1) {
                 continue;
@@ -26,9 +23,10 @@ public:
             flipCount++;
         }
 
-        onesCount += nums[nums.size()-2];
-        onesCount += nums[nums.size()-1];
+        if(nums[nums.size()-2] != 1 || nums[nums.size()-1] != 1) {
+            flipCount = -1;
+        }
 
-        return onesCount == nums.size() ? flipCount : -1;
+        return flipCount;
     }
 };
