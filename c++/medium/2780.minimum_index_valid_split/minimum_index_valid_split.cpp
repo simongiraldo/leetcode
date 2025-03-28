@@ -3,8 +3,8 @@ public:
     int minimumIndex(vector<int>& nums) {
         int dominant = 0;
         int secondDominant = 0;
-        vector<int> dominantCount(nums.size(), 0);
-        vector<int> secondDominantCount(nums.size(), 0);
+        int biggest = 0;
+        int secondBiggest = 0;
         unordered_map<int, int> elementCount;
 
         for(int i = 0; i < nums.size(); i++) {
@@ -16,11 +16,14 @@ public:
         }
 
         for(const auto& pair : elementCount) {
-            if(pair.second > dominant) {
+            if(pair.second > biggest) {
                 secondDominant = dominant;
+                secondBiggest = biggest;
                 dominant = pair.first;
-            } else if(pair.second > secondDominant) {
-                secondDominant = pair.second;
+                biggest = pair.second;
+            } else if(pair.second > secondBiggest) {
+                secondDominant = pair.first;
+                secondBiggest = pair.second;
             }
         }
 
@@ -30,16 +33,17 @@ public:
             domCountByIndex += nums[i] == dominant;
             secondDominantCountByIndex += nums[i] == secondDominant;
 
-            dominantCount[i] = domCountByIndex;
-            secondDominantCount[i] = secondDominantCountByIndex;
-        }
+            int minLeftDominants = (nums.size()+1-i)/2;
+            minLeftDominants = minLeftDominants == 0 ? 1 : minLeftDominants;
 
-        int index = 0;
-        while(index < nums.size()-1) {
-            if(dominantCount[index] > secondDominantCount[index]) {
-                return index;
+            int minRightDominants = (i+1)/2;
+            minRightDominants = minRightDominants == 0 ? 1 : minRightDominants;
+
+            if(domCountByIndex > secondDominantCountByIndex 
+            && domCountByIndex > minRightDominants
+            && elementCount[dominant]-domCountByIndex > minLeftDominants) {
+                return i;
             }
-            index++;
         }
 
         return -1;
