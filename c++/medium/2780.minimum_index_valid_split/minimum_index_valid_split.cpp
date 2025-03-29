@@ -1,10 +1,15 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
 class Solution {
 public:
     int minimumIndex(vector<int>& nums) {
         int dominant = 0;
         int secondDominant = 0;
-        int biggest = 0;
-        int secondBiggest = 0;
+        int domCount = 0;
+        int secondDomCount = 0;
         unordered_map<int, int> elementCount;
 
         for(int i = 0; i < nums.size(); i++) {
@@ -14,36 +19,35 @@ public:
                 elementCount[nums[i]]++;
             }
         }
-
+        
         for(const auto& pair : elementCount) {
-            if(pair.second > biggest) {
+            if(pair.second > domCount) {
                 secondDominant = dominant;
-                secondBiggest = biggest;
+                secondDomCount = domCount;
                 dominant = pair.first;
-                biggest = pair.second;
-            } else if(pair.second > secondBiggest) {
+                domCount = pair.second;
+            } else if(pair.second > secondDomCount) {
                 secondDominant = pair.first;
-                secondBiggest = pair.second;
+                secondDomCount = pair.second;
             }
         }
+        
+        domCount = 0;
+        secondDomCount = 0;
+        int i = 0;
+        while(i < nums.size()) {
+            domCount += nums[i] == dominant;
+            secondDomCount += nums[i] == secondDominant;
 
-        int domCountByIndex = 0;
-        int secondDominantCountByIndex = 0;
-        for(int i = 0; i < nums.size(); i++) {
-            domCountByIndex += nums[i] == dominant;
-            secondDominantCountByIndex += nums[i] == secondDominant;
+            int minRightDominants = (nums.size()-(i+1))/2 + 1;
+            int minLeftDominants = (i+1)/2 + 1;
 
-            int minLeftDominants = (nums.size()+1-i)/2;
-            minLeftDominants = minLeftDominants == 0 ? 1 : minLeftDominants;
-
-            int minRightDominants = (i+1)/2;
-            minRightDominants = minRightDominants == 0 ? 1 : minRightDominants;
-
-            if(domCountByIndex > secondDominantCountByIndex 
-            && domCountByIndex > minRightDominants
-            && elementCount[dominant]-domCountByIndex > minLeftDominants) {
+            if(domCount > secondDomCount && domCount >= minLeftDominants
+            && elementCount[dominant]-domCount >= minRightDominants){
                 return i;
             }
+
+            i++;
         }
 
         return -1;
